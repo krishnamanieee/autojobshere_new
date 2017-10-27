@@ -86,7 +86,7 @@ public class  RegisterActivity extends Activity {
     public void freshers(){
         List<String> list =new ArrayList<String>();
         employeredit.setText("Fresher");
-        experienceedit.setText("Fresher");
+        experienceedit.setText("Frehgyysher");
         locationedit.setText("Fresher");
         edt_designation.setText("Freshers");
         list.add("Fresher");
