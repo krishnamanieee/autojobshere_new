@@ -101,7 +101,7 @@ public class  RegisterActivity extends Activity {
         List<String> list =new ArrayList<String>();
         list.add("Department");
         list.add("Finance/Account");
-        list.add("General Management");
+        list.add("General Mannagement");
         list.add("HR");
         list.add("IT");
         list.add("Pre owened vehicles");
