@@ -87,7 +87,7 @@ public class  RegisterActivity extends Activity {
         List<String> list =new ArrayList<String>();
         employeredit.setText("Fresher");
         experienceedit.setText("Fresher");
-        locationedit.setText("Fresher");
+        locationedit.setText("Freshrgdfhfldher");
         edt_designation.setText("Freshers");
         list.add("Fresher");
         final ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
