@@ -22,6 +22,7 @@ public class UserLocalStore {
         spEditor.putString("password",user.password);
         spEditor.putString("name",user.name);
         spEditor.putString("phone",user.phone);
+        spEditor.putString("otp",user.otp);
         spEditor.commit();
     }
     public User getLoggedInUser(){
@@ -29,8 +30,9 @@ public class UserLocalStore {
         String phoneno=userlocalDatabase.getString("password","");
         String username=userlocalDatabase.getString("name","");
         String pass=userlocalDatabase.getString("phone","");
+        String otp=userlocalDatabase.getString("otp","");
 
-        User storedUser=new User(name,username,pass,phoneno);
+        User storedUser=new User(name,username,phoneno,pass,otp);
         return  storedUser;
     }
 

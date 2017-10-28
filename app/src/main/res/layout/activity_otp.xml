@@ -84,7 +84,7 @@ mobile number.please enter it below"
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText_otp"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -92,8 +92,8 @@ mobile number.please enter it below"
             android:layout_weight="0.00"
             android:ems="10"
             android:gravity="center"
-            android:inputType="number"
-            android:text="OTP" />
+            android:hint="OTP"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView12"
@@ -108,7 +108,7 @@ mobile number.please enter it below"
             android:textStyle="normal" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_otp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center"

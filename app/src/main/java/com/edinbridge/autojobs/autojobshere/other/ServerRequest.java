@@ -63,6 +63,7 @@ public class ServerRequest {
             dataToSend.add(new BasicNameValuePair("email",user.email));
             dataToSend.add(new BasicNameValuePair("phone",user.phone));
             dataToSend.add(new BasicNameValuePair("password",user.password));
+            dataToSend.add(new BasicNameValuePair("otp","2154"));
 
             HttpParams httpRequestParams=new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
@@ -135,9 +136,8 @@ public class ServerRequest {
 
                 else {
                     String email=jobject.getString("email");
-
                     String password=jobject.getString("password");
-                    returnedUser =new User(email,password,password,password);
+                    returnedUser =new User(email,password,password,password,password);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

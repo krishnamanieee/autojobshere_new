@@ -31,6 +31,8 @@
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".IntroActivity"></activity>
         <activity android:name=".FotgotPwd"/>
+        <activity android:name=".OtpActivity"
+            android:theme="@style/AppTheme.NoActionBar"  />
 
     </application>
 

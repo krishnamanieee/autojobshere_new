@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.edinbridge.autojobs.autojobshere.other.GetUserCallBack;
@@ -19,6 +20,7 @@ import com.edinbridge.autojobs.autojobshere.other.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Ayothi selvam on 23-10-2017.
@@ -61,6 +63,14 @@ public class  RegisterActivity extends Activity {
         addDeptspinner();
         addindustryspinner();
 
+
+        Random r = new Random();
+         int randomNumber = r.nextInt(9999);
+
+        Toast.makeText(getApplicationContext(),""+randomNumber,Toast.LENGTH_SHORT).show();
+
+
+
         checkBox_frsher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +88,10 @@ public class  RegisterActivity extends Activity {
             }
         });
 
-        register();
+
+        String otp = String.valueOf(randomNumber);
+
+        register(otp);
 
 
     }
@@ -135,7 +148,7 @@ public class  RegisterActivity extends Activity {
 
 
 
-    public void register() {
+    public void register(final String otp) {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,20 +156,23 @@ public class  RegisterActivity extends Activity {
                 String username=emailedit.getText().toString();
                 String pass=passwordedit.getText().toString();
                 String phoneno=mobileedit.getText().toString();
-                User registeredData=new User(name,username,phoneno,pass);
+                User registeredData=new User(name,username,phoneno,pass,otp);
 
-                registerUser(registeredData);
+                registerUser(registeredData,otp);
             }
         });
 
     }
-    private void registerUser(User user){
+    private void registerUser(User user, final String otp){
 
         ServerRequest serverRequest=new ServerRequest(this);
         serverRequest.storeUserDataInBackground(user, new GetUserCallBack() {
             @Override
             public void done(User returedUser) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                Intent intent=new Intent(getApplicationContext(),OtpActivity.class);
+                intent.putExtra("otp",""+otp);
+                startActivity(intent);
+
             }
         });
     }
