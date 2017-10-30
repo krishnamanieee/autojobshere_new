@@ -1,28 +1,34 @@
 package com.edinbridge.autojobs.autojobshere.other;
 
 /**
- * Created by Edinbridge on 10/24/2017.
+ * Created by Ayothi selvam on 30-10-2017.
  */
 
 public class User {
-    String name,email,phone,password;
-    String otp;
+    String name, email,phone_no, pass,otp;
 
-    public User(String name, String email, String phone, String password,String otp){
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-        this.otp=otp;
-    }
 
-    public User(String email, String password){
 
+
+    public  User(String name,String email,String phone_no,String pass, String otp){
+        this.name=name;
         this.email=email;
-        this.password=password;
-        this.name="";
-        this.phone= "";
+        this.phone_no=phone_no;
+        this.pass=pass;
+        this.otp=otp;
 
     }
 
+    public  User(String email,String pass){
+        this.name="";
+        this.email=email;
+        this.phone_no="";
+        this.pass=pass;
+
+
+    }
+    public User(String phone_no){
+        this.phone_no=phone_no;
+
+    }
 }

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.edinbridge.autojobs.autojobshere.other.GetUserCallBack;
 import com.edinbridge.autojobs.autojobshere.other.ServerRequest;
 import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
@@ -65,16 +64,16 @@ public class LoginActivity extends Activity {
 
     private void authenticate(User user){
         ServerRequest serverRequest=new ServerRequest(this);
-        serverRequest.fetchUserDataInBackground(user, new GetUserCallBack() {
+        /*serverRequest.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
-            public void done(User returnedUser) {
-                if (returnedUser == null){
+            public void done(User returedUser) {
+                if (returedUser == null){
                     showErrorMessage();
                 }else {
-                    logUserIn(returnedUser );
+                    logUserIn(returedUser );
                 }
             }
-        });
+        });*/
     }
 
     private void showErrorMessage(){

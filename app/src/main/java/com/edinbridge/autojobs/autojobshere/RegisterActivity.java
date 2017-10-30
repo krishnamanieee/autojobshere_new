@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.edinbridge.autojobs.autojobshere.other.GetUserCallBack;
+import com.edinbridge.autojobs.autojobshere.other.GetUserCallback;
 import com.edinbridge.autojobs.autojobshere.other.ServerRequest;
 import com.edinbridge.autojobs.autojobshere.other.User;
 
@@ -30,7 +30,7 @@ public class  RegisterActivity extends Activity {
 
     CheckBox checkBox_frsher;
     TextView titletxt,upldbtntxt,agreetext,registertext;
-    EditText employeredit,experienceedit,locationedit,nameedit,mobileedit,emailedit,passwordedit,edt_designation;
+    EditText employeredit,experienceedit,locationedit,nameedit,mobileedit,emailedit,editText_pass,edt_designation;
     Spinner spinner_dept,spinner_industry;
     Button uploadbtn,registerbtn,loginbtn;
     @Override
@@ -48,7 +48,7 @@ public class  RegisterActivity extends Activity {
         nameedit = (EditText) findViewById(R.id.nameedit);
         mobileedit = (EditText) findViewById(R.id.mobileedit);
         emailedit = (EditText) findViewById(R.id.emailedit);
-        passwordedit = (EditText) findViewById(R.id.passwordedit);
+        editText_pass = (EditText) findViewById(R.id.editText_pass);
         employeredit = (EditText) findViewById(R.id.employeredit);
         experienceedit = (EditText) findViewById(R.id.experienceedit);
         locationedit = (EditText) findViewById(R.id.locationedit);
@@ -135,7 +135,7 @@ public class  RegisterActivity extends Activity {
         list2.add("Commercial Vehicle");
         list2.add("HCV");
         list2.add("LCV");
-        list2.add("Two Wheelerk");
+        list2.add("Two Wheeler");
         list2.add("Others");
 
         ArrayAdapter<String> data2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list2);
@@ -152,27 +152,29 @@ public class  RegisterActivity extends Activity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name=nameedit.getText().toString();
-                String username=emailedit.getText().toString();
-                String pass=passwordedit.getText().toString();
-                String phoneno=mobileedit.getText().toString();
-                User registeredData=new User(name,username,phoneno,pass,otp);
+                String name=nameedit.getText().toString().trim();
+                String email=emailedit.getText().toString().trim();
+                String password=editText_pass.getText().toString().trim();
+                String phoneno=mobileedit.getText().toString().trim();
+
+                User registeredData=new User(name,email,phoneno,password,otp);
 
                 registerUser(registeredData,otp);
             }
         });
 
     }
-    private void registerUser(User user, final String otp){
-
+    private void registerUser(User user,final String otp){
         ServerRequest serverRequest=new ServerRequest(this);
-        serverRequest.storeUserDataInBackground(user, new GetUserCallBack() {
+        serverRequest.storeUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returedUser) {
-                Intent intent=new Intent(getApplicationContext(),OtpActivity.class);
-                intent.putExtra("otp",""+otp);
-                startActivity(intent);
 
+                Intent intent=new Intent(getApplicationContext(),OtpActivity.class);
+                intent.putExtra("email",emailedit.getText().toString().trim());
+                intent.putExtra("phone",mobileedit.getText().toString().trim());
+                intent.putExtra("otp",otp.trim());
+                startActivity(intent);
             }
         });
     }

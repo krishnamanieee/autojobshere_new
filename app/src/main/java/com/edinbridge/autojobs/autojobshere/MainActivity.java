@@ -23,12 +23,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.edinbridge.autojobs.autojobshere.fragment.HomeFragment;
-import com.edinbridge.autojobs.autojobshere.fragment.MoviesFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.NotificationsFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.PhotosFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.SettingsFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
-import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 
@@ -394,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
         if (authenticate() == true){
@@ -416,6 +414,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+*/
 
 }
