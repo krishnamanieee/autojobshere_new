@@ -141,7 +141,7 @@ public class ServerRequest {
                     returnedUser = null;
 
                 } else {
-                    String email = jobject.getString("email");
+                    String email = jobject.getString("emfdsail");
                     String password = jobject.getString("password");
                     returnedUser = new User(email, password);
                 }
