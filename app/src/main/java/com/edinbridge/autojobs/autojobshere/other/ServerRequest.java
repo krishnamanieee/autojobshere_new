@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class ServerRequest {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
-    public static final String SERVER_ADDRESS = "http://autojobshere.com/app/";
+    public static final String SERVER_ADDRESS = "http://autojobshere.com/app/g";
 
 
     public ServerRequest(Context context) {
