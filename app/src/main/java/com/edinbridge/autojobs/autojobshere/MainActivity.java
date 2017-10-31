@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 return photosFragment;
             case 2:
                 // movies fragment
-                MoviesFragment moviesFragment = new MoviesFragment();
+                SearchF moviesFragment = new MoviesFragment();
                 return moviesFragment;
             case 3:
                 // notifications fragment
