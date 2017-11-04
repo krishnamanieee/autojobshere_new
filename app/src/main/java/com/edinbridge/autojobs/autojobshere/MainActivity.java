@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.edinbridge.autojobs.autojobshere.fragment.HomeFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.NotificationsFragment;
-import com.edinbridge.autojobs.autojobshere.fragment.PhotosFragment;
+import com.edinbridge.autojobs.autojobshere.fragment.ProfileFragmet;
 import com.edinbridge.autojobs.autojobshere.fragment.SettingsFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 return homeFragment;
             case 1:
                 // photos
-                PhotosFragment photosFragment = new PhotosFragment();
+                ProfileFragmet photosFragment = new ProfileFragmet();
                 return photosFragment;
             case 2:
                 // movies fragment
