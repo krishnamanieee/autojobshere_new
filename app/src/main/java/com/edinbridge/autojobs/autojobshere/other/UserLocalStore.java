@@ -42,7 +42,7 @@ public class UserLocalStore {
     }
 
     public boolean getUserLoggedIn(){
-        if(userlocalDatabase.getBoolean("loggedIn",false)){
+        if(userlocalDatabase.getBoolean("loggedIn",false) == true){
             return  true;
         }
         else {

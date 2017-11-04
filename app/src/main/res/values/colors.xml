@@ -6,4 +6,5 @@
     <color name="colorAccent">#ff5722</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="colorHash">#282828</color>
+    <color name="foreground_material_light">#ffffff</color>
 </resources>
