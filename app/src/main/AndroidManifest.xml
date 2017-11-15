@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edinbridge.autojobs.autojobshere">
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,21 +21,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/activity_title_about_us" />
         <activity
             android:name=".PrivacyPolicyActivity"
             android:label="@string/activity_title_privacy_policy" />
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".IntroActivity"></activity>
-        <activity android:name=".FotgotPwd"/>
-        <activity android:name=".OtpActivity"
-            android:theme="@style/AppTheme.NoActionBar"  />
-
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".IntroActivity" />
+        <activity android:name=".FotgotPwd" />
+        <activity
+            android:name=".OtpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".other.jobDesActivity"
+            android:label="@string/title_activity_job_des"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
