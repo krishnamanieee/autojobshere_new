@@ -7,4 +7,5 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="colorHash">#282828</color>
     <color name="foreground_material_light">#ffffff</color>
+    <color name="secondaryColor">#000</color>
 </resources>

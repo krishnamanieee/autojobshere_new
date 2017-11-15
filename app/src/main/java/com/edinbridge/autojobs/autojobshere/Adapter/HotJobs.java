@@ -6,5 +6,5 @@ package com.edinbridge.autojobs.autojobshere.Adapter;
 
 public class HotJobs {
 
-    String id,companyName,brandLogo,
+    String id,companyName,brandLogo;
 }
