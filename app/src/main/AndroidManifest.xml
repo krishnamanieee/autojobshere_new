@@ -40,7 +40,8 @@
         <activity
             android:name=".other.jobDesActivity"
             android:label="@string/title_activity_job_des"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SearchedActivity"></activity>
     </application>
 
 </manifest>
