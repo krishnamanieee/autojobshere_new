@@ -392,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   /* @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         if (authenticate() == true){
@@ -407,13 +407,12 @@ public class MainActivity extends AppCompatActivity {
         return userLocalstore.getUserLoggedIn();
     }
     public void displayUserData(){
-        User user=userLocalstore.getLoggedInUser();
+       *//* User user=userLocalstore.getLoggedInUser();
 
-        txtName.setText(user.toString());
+        txtName.setText(user.toString());*//*
 
 
 
-    }
-*/
+    }*/
 
 }

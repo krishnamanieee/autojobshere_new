@@ -7,12 +7,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
+            android:id="@+id/img_gridHotJobs"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/icon_otp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="25dp"/>
         <TextView
+            android:id="@+id/textView_gridComName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -22,7 +24,7 @@
             />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_gridCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
