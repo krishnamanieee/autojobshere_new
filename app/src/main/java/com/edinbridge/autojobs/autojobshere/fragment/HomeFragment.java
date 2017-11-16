@@ -51,11 +51,12 @@ public class HomeFragment extends Fragment {
     Button button_search;
 
     List<String> arrayList;
+    List<String> arrayListDep;
 
     String segment,city,department;
 
     private static final String URL_DATA="http://autojobshere.com/app/fetch_city.php";
-    private static final String URL_DATA_DEPARTMENT="http://autojobshere.com/app/fetch_department.php.php";
+    private static final String URL_DATA_DEPARTMENT="http://autojobshere.com/app/fetch_department.php";
 
 
 
@@ -113,6 +114,7 @@ public class HomeFragment extends Fragment {
         spinner_department=(Spinner) v.findViewById(R.id.spinner_department);
 
         arrayList= new ArrayList<>();
+        arrayListDep= new ArrayList<>();
 
 
         addLoanOption();
@@ -165,17 +167,18 @@ public class HomeFragment extends Fragment {
                         progressDialog.dismiss();
                         try {
                             JSONObject jsonObject=new JSONObject(response);
-                            JSONArray jsonArray=jsonObject.getJSONArray("city");
+                            JSONArray jsonArray=jsonObject.getJSONArray("department");
+
 
                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
-                                arrayList.add(object.getString("city"));
+                                arrayListDep.add(object.getString("department"));
                             }
 
-                            String s=arrayList.toString();
-                            Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
-                            Collections.sort(arrayList);
-                            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayList);
+                            String s1=arrayListDep.toString();
+                            Toast.makeText(getContext(),s1,Toast.LENGTH_SHORT).show();
+                            Collections.sort(arrayListDep);
+                            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayListDep);
                             spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
                             spinner_department.setAdapter(spinnerArrayAdapter);
 
