@@ -24,11 +24,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.edinbridge.autojobs.autojobshere.fragment.AppliedJobsFragmet;
 import com.edinbridge.autojobs.autojobshere.fragment.HomeFragment;
-import com.edinbridge.autojobs.autojobshere.fragment.NotificationsFragment;
-import com.edinbridge.autojobs.autojobshere.fragment.ProfileFragmet;
-import com.edinbridge.autojobs.autojobshere.fragment.SettingsFragment;
+import com.edinbridge.autojobs.autojobshere.fragment.SavedJobFragment;
+import com.edinbridge.autojobs.autojobshere.fragment.SearchJobFragmet;
+import com.edinbridge.autojobs.autojobshere.fragment.InterviewScheduleFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
-import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 
@@ -52,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";
-    private static final String TAG_PHOTOS = "photos";
-    private static final String TAG_MOVIES = "movies";
-    private static final String TAG_NOTIFICATIONS = "notifications";
-    private static final String TAG_SETTINGS = "settings";
+    private static final String TAG_SEARCH = "Search Job";
+    private static final String TAG_APPLIED = "Applied Job";
+    private static final String TAG_SAVED = "Saved Job";
+    private static final String TAG_INTERVIEW = "Interview Schedule";
     public static String CURRENT_TAG = TAG_HOME;
 
     // toolbar titles respected to selected nav menu item
@@ -205,21 +204,21 @@ public class MainActivity extends AppCompatActivity {
                 return homeFragment;
             case 1:
                 // photos
-                ProfileFragmet photosFragment = new ProfileFragmet();
-                return photosFragment;
+                SearchJobFragmet searchJobFragmet = new SearchJobFragmet();
+                return searchJobFragmet;
             case 2:
                 // appliedjobs fragment
                 AppliedJobsFragmet appliedjobs = new AppliedJobsFragmet();
                 return appliedjobs;
             case 3:
                 // notifications fragment
-                NotificationsFragment notificationsFragment = new NotificationsFragment();
-                return notificationsFragment;
+                SavedJobFragment savedJobFragment = new SavedJobFragment();
+                return savedJobFragment;
 
             case 4:
                 // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
+                InterviewScheduleFragment interviewScheduleFragment = new InterviewScheduleFragment();
+                return interviewScheduleFragment;
             default:
                 return new HomeFragment();
         }
@@ -250,19 +249,19 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_searchjob:
                         navItemIndex = 1;
-                        CURRENT_TAG = TAG_PHOTOS;
+                        CURRENT_TAG = TAG_SEARCH;
                         break;
                     case R.id.nav_Appliedjobs:
                         navItemIndex = 2;
-                        CURRENT_TAG = TAG_MOVIES;
+                        CURRENT_TAG = TAG_APPLIED;
                         break;
                     case R.id.nav_savedjobs:
                         navItemIndex = 3;
-                        CURRENT_TAG = TAG_NOTIFICATIONS;
+                        CURRENT_TAG = TAG_SAVED;
                         break;
                     case R.id.nav_interviewschedule:
                         navItemIndex = 4;
-                        CURRENT_TAG = TAG_SETTINGS;
+                        CURRENT_TAG = TAG_INTERVIEW;
                         break;
                     case R.id.nav_profile:
                         // launch new intent instead of loading fragment
