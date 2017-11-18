@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.edinbridge.autojobs.autojobshere.fragment.AppliedJobsFragmet;
 import com.edinbridge.autojobs.autojobshere.fragment.HomeFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.NotificationsFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.ProfileFragmet;
@@ -206,9 +207,9 @@ public class MainActivity extends AppCompatActivity {
                 ProfileFragmet photosFragment = new ProfileFragmet();
                 return photosFragment;
             case 2:
-                // movies fragment
-                //SearchF moviesFragment = new MoviesFragment();
-              //  return moviesFragment;
+                // appliedjobs fragment
+                AppliedJobsFragmet appliedjobs = new AppliedJobsFragmet();
+                return appliedjobs;
             case 3:
                 // notifications fragment
                 NotificationsFragment notificationsFragment = new NotificationsFragment();

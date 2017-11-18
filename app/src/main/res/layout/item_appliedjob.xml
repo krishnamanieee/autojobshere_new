@@ -11,106 +11,134 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
+                    android:id="@+id/aj_imgBrandLogo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_otp"/>
+                    android:src="@drawable/icon_otp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingTop="10dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                android:paddingRight="5dp"
+                android:paddingTop="10dp">
+
                 <TextView
+                    android:id="@+id/aj_txtJobName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Job Name"/>
+                    android:text="Job Name" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/aj_txtCompanyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="company name" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="company name"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:text="-" />
+
                     <TextView
+                        android:id="@+id/aj_txtCityName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="city"/>
+                        android:text="city" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:text="Exp"/>
+                        android:text="Exp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:text=":" />
+
                     <TextView
+                        android:id="@+id/aj_txtExperience"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="xxxx yrs"/>
+                        android:text="xxxx yrs" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:text="Salary"/>
+                        android:text="Salary" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:text=":" />
+
                     <TextView
+                        android:id="@+id/aj_txtSalary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="xxxxxx - xxxxx pm"/>
+                        android:text="xxxxxx - xxxxx pm" />
                 </LinearLayout>
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingTop="10dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <ImageView
+                        android:id="@+id/aj_imgDateIcon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/icon_otp"
                         android:layout_gravity="center"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/icon_otp" />
+
                     <TextView
+                        android:id="@+id/aj_txtDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX-XX-XX"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:text="XX-XX-XX" />
                 </LinearLayout>
 
 
