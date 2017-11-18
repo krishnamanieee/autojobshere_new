@@ -1,5 +1,4 @@
 package com.edinbridge.autojobs.autojobshere.Adapter;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,25 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.edinbridge.autojobs.autojobshere.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 /**
  * Created by krish on 11/18/2017.
  */
-
 public class AdapterAppliedJobs extends RecyclerView.Adapter<AdapterAppliedJobs.ViewHolder> {
     private List<JobDetails> jobDetailses;
     private Context context;
-
     public AdapterAppliedJobs(List<JobDetails> jobDetailses, Context context) {
         this.jobDetailses = jobDetailses;
         this.context = context;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_appliedjob,parent,false);
@@ -35,7 +28,6 @@ public class AdapterAppliedJobs extends RecyclerView.Adapter<AdapterAppliedJobs.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         JobDetails jobDetails= jobDetailses.get(position);
         holder.aj_txtCompanyName.setText(jobDetails.getCompanyName());
         holder.aj_txtJobName.setText(jobDetails.getJobName());
@@ -43,7 +35,6 @@ public class AdapterAppliedJobs extends RecyclerView.Adapter<AdapterAppliedJobs.
         holder.aj_txtExperience.setText(jobDetails.getMinExp()+" - "+jobDetails.getMaxExp() + " Yrs");
         holder.aj_txtSalary.setText(jobDetails.getMinSalary()+" - "+jobDetails.getMaxSalary() + "PM");
         holder.aj_txtDate.setText(jobDetails.getDate());
-
         Picasso.with(context)
                 .load("http://autojobshere.com/admin/"+jobDetails.getLogo()).into(holder.aj_imgBrandLogo);
     }
@@ -52,12 +43,9 @@ public class AdapterAppliedJobs extends RecyclerView.Adapter<AdapterAppliedJobs.
     public int getItemCount() {
         return jobDetailses.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
-
         TextView aj_txtJobName,aj_txtCompanyName,aj_txtCityName,aj_txtExperience,aj_txtSalary,aj_txtDate;
         ImageView aj_imgBrandLogo;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
