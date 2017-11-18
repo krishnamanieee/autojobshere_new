@@ -6,15 +6,18 @@ package com.edinbridge.autojobs.autojobshere.Adapter;
 
 public class JobDetails {
 
-    String jobName,companyName,cityName,experience,salary,date;
+    String jobName,companyName,cityName,minExp,maxExp,minSalary,maxSalary,date,logo;
 
-    public JobDetails(String jobName, String companyName, String cityName, String experience, String salary, String date) {
+    public JobDetails(String jobName, String companyName, String cityName, String minExp, String maxExp, String minSalary, String maxSalary, String date, String logo) {
         this.jobName = jobName;
         this.companyName = companyName;
         this.cityName = cityName;
-        this.experience = experience;
-        this.salary = salary;
+        this.minExp = minExp;
+        this.maxExp = maxExp;
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
         this.date = date;
+        this.logo = logo;
     }
 
     public String getJobName() {
@@ -29,15 +32,27 @@ public class JobDetails {
         return cityName;
     }
 
-    public String getExperience() {
-        return experience;
+    public String getMinExp() {
+        return minExp;
     }
 
-    public String getSalary() {
-        return salary;
+    public String getMaxExp() {
+        return maxExp;
+    }
+
+    public String getMinSalary() {
+        return minSalary;
+    }
+
+    public String getMaxSalary() {
+        return maxSalary;
     }
 
     public String getDate() {
         return date;
+    }
+
+    public String getLogo() {
+        return logo;
     }
 }

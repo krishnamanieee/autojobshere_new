@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edinbridge.autojobs.autojobshere.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,9 +40,12 @@ public class AdapterAppliedJobs extends RecyclerView.Adapter<AdapterAppliedJobs.
         holder.aj_txtCompanyName.setText(jobDetails.getCompanyName());
         holder.aj_txtJobName.setText(jobDetails.getJobName());
         holder.aj_txtCityName.setText(jobDetails.getCityName());
-        holder.aj_txtExperience.setText(jobDetails.getExperience());
-        holder.aj_txtSalary.setText(jobDetails.getSalary());
+        holder.aj_txtExperience.setText(jobDetails.getMinExp()+" - "+jobDetails.getMaxExp() + " Yrs");
+        holder.aj_txtSalary.setText(jobDetails.getMinSalary()+" - "+jobDetails.getMaxSalary() + "PM");
         holder.aj_txtDate.setText(jobDetails.getDate());
+
+        Picasso.with(context)
+                .load("http://autojobshere.com/admin/"+jobDetails.getLogo()).into(holder.aj_imgBrandLogo);
     }
 
     @Override

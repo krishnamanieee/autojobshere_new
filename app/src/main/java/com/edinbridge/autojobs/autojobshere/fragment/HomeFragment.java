@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,12 +30,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 
 
 /**
@@ -55,8 +52,20 @@ public class HomeFragment extends Fragment {
 
     String segment,city,department;
 
+    GridView gridView_hotjob;
+
     private static final String URL_DATA="http://autojobshere.com/app/fetch_city.php";
     private static final String URL_DATA_DEPARTMENT="http://autojobshere.com/app/fetch_department.php";
+    private static final String URL_DATA_HOT="http://autojobshere.com/app/fetch_department.php";
+
+    public static final String TAG_IMAGE_URL = "image";
+    public static final String TAG_NAME = "name";
+
+    private ArrayList<String> Listimages;
+    private ArrayList<String> Listcity;
+    private ArrayList<String> ListcompanyName;
+
+
 
 
 
@@ -113,8 +122,13 @@ public class HomeFragment extends Fragment {
         spinner_city=(Spinner) v.findViewById(R.id.spinner_city);
         spinner_department=(Spinner) v.findViewById(R.id.spinner_department);
 
+
+        gridView_hotjob=(GridView) v.findViewById(R.id.gridView_hotJob);
+
+
         arrayList= new ArrayList<>();
         arrayListDep= new ArrayList<>();
+
 
 
         addLoanOption();
@@ -146,13 +160,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
-
         return v;
     }
+
+
 
     private void getDepartment() {
         final ProgressDialog progressDialog=new ProgressDialog(getContext());
@@ -168,9 +179,7 @@ public class HomeFragment extends Fragment {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("department");
-
-
-                            for (int i=0;i<jsonArray.length();i++){
+                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
                                 arrayListDep.add(object.getString("department"));
                             }

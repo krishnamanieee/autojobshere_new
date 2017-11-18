@@ -28,6 +28,7 @@ import com.edinbridge.autojobs.autojobshere.fragment.NotificationsFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.ProfileFragmet;
 import com.edinbridge.autojobs.autojobshere.fragment.SettingsFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
+import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 
@@ -392,8 +393,8 @@ public class MainActivity extends AppCompatActivity {
             fab.hide();
     }
 
-
-    /*@Override
+/*
+    @Override
     protected void onStart() {
         super.onStart();
         if (authenticate() == true){
@@ -408,9 +409,9 @@ public class MainActivity extends AppCompatActivity {
         return userLocalstore.getUserLoggedIn();
     }
     public void displayUserData(){
-       *//* User user=userLocalstore.getLoggedInUser();
+       User user=userLocalstore.getLoggedInUser();
 
-        txtName.setText(user.toString());*//*
+        txtName.setText(user.toString());
 
 
 

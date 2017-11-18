@@ -134,10 +134,13 @@ public class AppliedJobsFragmet extends Fragment {
                                 JobDetails jobDetails=new JobDetails(
                                         jsonObject1.getString("jobname"),
                                         jsonObject1.getString("company"),
-                                        jsonObject1.getString("jobname"),
-                                        jsonObject1.getString("jobname"),
-                                        jsonObject1.getString("jobname"),
-                                        jsonObject1.getString("applydate")
+                                        jsonObject1.getString("city"),
+                                        jsonObject1.getString("experience"),
+                                        jsonObject1.getString("maxexp"),
+                                        jsonObject1.getString("salary"),
+                                        jsonObject1.getString("maxsal"),
+                                        jsonObject1.getString("applydate"),
+                                        jsonObject1.getString("logo")
                                 );
                                 list.add(jobDetails);
                             }
