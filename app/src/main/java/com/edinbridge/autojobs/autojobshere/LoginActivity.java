@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.edinbridge.autojobs.autojobshere.other.GetUserCallback;
 import com.edinbridge.autojobs.autojobshere.other.ServerRequest;
 import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
@@ -54,7 +55,7 @@ public class LoginActivity extends Activity {
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username=editText_username.getText().toString();
+                String username=editText_username.getText().toString().trim();
                 String pass=editText_password.getText().toString();
                 User user=new User(username,pass);
                 authenticate(user);
@@ -64,7 +65,7 @@ public class LoginActivity extends Activity {
 
     private void authenticate(User user){
         ServerRequest serverRequest=new ServerRequest(this);
-        /*serverRequest.fetchUserDataInBackground(user, new GetUserCallback() {
+        serverRequest.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returedUser) {
                 if (returedUser == null){
@@ -73,7 +74,7 @@ public class LoginActivity extends Activity {
                     logUserIn(returedUser );
                 }
             }
-        });*/
+        });
     }
 
     private void showErrorMessage(){

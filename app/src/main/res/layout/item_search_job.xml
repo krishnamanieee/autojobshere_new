@@ -5,55 +5,54 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/seajob_img_logo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/icon_otp"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp">
+
                 <TextView
+                    android:id="@+id/seajob_txt_jobName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Job Name"/>
+                    android:text="Job Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/seajob_txt_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="company name" />
+
+                <TextView
+                    android:id="@+id/seajob_txt_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="city" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="company name"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="city"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
@@ -64,10 +63,12 @@
                         android:text=":"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
+
                     <TextView
+                        android:id="@+id/seajob_txt_exp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="xxxx yrs"/>
+                        android:text="xxxx yrs" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,49 +84,17 @@
                         android:text=":"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
+
                     <TextView
+                        android:id="@+id/seajob_txt_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="xxxxxx - xxxxx pm"/>
+                        android:text="xxxxxx - xxxxx pm" />
                 </LinearLayout>
 
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="10dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/icon_otp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="5dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Saved Job"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="bottom"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="Apply"
-                        android:textAllCaps="false"
-                        android:background="@drawable/border"/>
-                </LinearLayout>
+
+
 
             </LinearLayout>
         </LinearLayout>

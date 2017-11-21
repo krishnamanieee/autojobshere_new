@@ -12,25 +12,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/lt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp">
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <ImageView
                     android:id="@+id/img_sj_logo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/icon_otp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:layout_weight="2"
                 android:orientation="vertical"
                 android:paddingLeft="5dp"
@@ -93,8 +95,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
@@ -114,52 +116,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="xxxx-xxxxx" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingBottom="5dp"
-                android:paddingTop="10dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/sj_button_remove"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="end"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/ic_close_black_24dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:gravity="bottom"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/sj_button_apply"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:background="@drawable/border"
-                        android:text="Apply"
-                        android:textAllCaps="false" />
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end|center"
+                        android:gravity="end|center">
+
+                        <Button
+                            android:id="@+id/sj_button_apply"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_gravity="top"
+                            android:background="@drawable/border"
+                            android:gravity="center"
+                            android:text="Apply"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

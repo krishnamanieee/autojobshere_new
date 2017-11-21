@@ -2,6 +2,7 @@ package com.edinbridge.autojobs.autojobshere.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.edinbridge.autojobs.autojobshere.R;
+import com.edinbridge.autojobs.autojobshere.SearchedActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,6 +66,8 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> Listimages;
     private ArrayList<String> Listcity;
     private ArrayList<String> ListcompanyName;
+
+
 
 
 
@@ -122,6 +126,11 @@ public class HomeFragment extends Fragment {
         spinner_city=(Spinner) v.findViewById(R.id.spinner_city);
         spinner_department=(Spinner) v.findViewById(R.id.spinner_department);
 
+        button_search=(Button) v.findViewById(R.id.button_homeSearch);
+
+
+        searchJobs();
+
 
         gridView_hotjob=(GridView) v.findViewById(R.id.gridView_hotJob);
 
@@ -163,6 +172,22 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
+    private void searchJobs() {
+
+        button_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                department=spinner_department.getSelectedItem().toString();
+                Intent intent=new Intent(getContext(),SearchedActivity.class);
+                intent.putExtra("segment",segment);
+                intent.putExtra("city",city);
+                intent.putExtra("department",department);
+                startActivity(intent);
+            }
+        });
+
+
+    }
 
 
     private void getDepartment() {
@@ -185,7 +210,7 @@ public class HomeFragment extends Fragment {
                             }
 
                             String s1=arrayListDep.toString();
-                            Toast.makeText(getContext(),s1,Toast.LENGTH_SHORT).show();
+                         //   Toast.makeText(getContext(),s1,Toast.LENGTH_SHORT).show();
                             Collections.sort(arrayListDep);
                             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayListDep);
                             spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
@@ -248,7 +273,7 @@ public class HomeFragment extends Fragment {
                             }
 
                             String s=arrayList.toString();
-                            Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
                             Collections.sort(arrayList);
                             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayList);
                             spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);

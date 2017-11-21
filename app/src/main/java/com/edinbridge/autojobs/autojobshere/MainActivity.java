@@ -28,6 +28,7 @@ import com.edinbridge.autojobs.autojobshere.fragment.SavedJobFragment;
 import com.edinbridge.autojobs.autojobshere.fragment.SearchJobFragmet;
 import com.edinbridge.autojobs.autojobshere.fragment.InterviewScheduleFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
+import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 
@@ -392,7 +393,6 @@ public class MainActivity extends AppCompatActivity {
             fab.hide();
     }
 
-/*
     @Override
     protected void onStart() {
         super.onStart();
@@ -414,6 +414,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }*/
+    }
 
 }
