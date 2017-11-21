@@ -128,6 +128,7 @@ public class AppliedJobsFragmet extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray =jsonObject.getJSONArray("appliedjob");
 
+
                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  jsonObject1 = jsonArray.getJSONObject(i);
 

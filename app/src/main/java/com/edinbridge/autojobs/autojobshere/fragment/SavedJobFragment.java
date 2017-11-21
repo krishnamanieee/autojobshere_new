@@ -1,14 +1,36 @@
 package com.edinbridge.autojobs.autojobshere.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.edinbridge.autojobs.autojobshere.Adapter.AdapterAppliedJobs;
+import com.edinbridge.autojobs.autojobshere.Adapter.AdapterSavedJob;
+import com.edinbridge.autojobs.autojobshere.Adapter.JobDetails;
 import com.edinbridge.autojobs.autojobshere.R;
+import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,6 +42,11 @@ import com.edinbridge.autojobs.autojobshere.R;
  * create an instance of this fragment.
  */
 public class SavedJobFragment extends Fragment {
+    private static final String URL_DATA = "http://autojobshere.com/app/FetchSavedjobs.php";
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private List<JobDetails> list;
+    
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,8 +92,93 @@ public class SavedJobFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        
+        View v=inflater.inflate(R.layout.fragment_savedjob, container, false);
+        recyclerView=(RecyclerView) v.findViewById(R.id.recyclerview_sj);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        list = new ArrayList<>();
+        loadSavedjobs();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_savedjob, container, false);
+        return v;
+    }
+
+    private void loadSavedjobs() {
+
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("loading data");
+        progressDialog.show();
+
+        StringRequest stringRequest  = new StringRequest(Request.Method.POST,
+                URL_DATA,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray =jsonObject.getJSONArray("savedjob");
+
+
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject  jsonObject1 = jsonArray.getJSONObject(i);
+
+                                JobDetails jobDetails=new JobDetails(
+                                        jsonObject1.getString("role"),
+                                        jsonObject1.getString("company"),
+                                        jsonObject1.getString("city"),
+                                        jsonObject1.getString("experience"),
+                                        jsonObject1.getString("maxexp"),
+                                        jsonObject1.getString("salary"),
+                                        jsonObject1.getString("maxsal"),
+                                        jsonObject1.getString("jobid"),
+                                        jsonObject1.getString("logo")
+                                );
+                                list.add(jobDetails);
+                            }
+
+                            adapter=new AdapterSavedJob(list,getContext());
+                            recyclerView.setAdapter(adapter);
+
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() {
+
+                UserLocalStore userLocalStore=new UserLocalStore(getContext());
+                //   String s=userLocalStore.getLoggedInUser();
+
+                // Creating Map String Params.
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Adding All values to Params.
+                params.put("user", "");
+                return params;
+            }
+
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

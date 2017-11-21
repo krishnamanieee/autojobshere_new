@@ -8,7 +8,18 @@ public class JobDetails {
 
     String jobName,companyName,cityName,minExp,maxExp,minSalary,maxSalary,date,logo;
 
-    String ivDate,ivTime,jobCode;
+    String ivDate,ivTime,jobCode,location;
+
+    public JobDetails(String jobName, String companyName, String cityName, String logo, String ivDate, String ivTime, String jobCode, String location) {
+        this.jobName = jobName;
+        this.companyName = companyName;
+        this.cityName = cityName;
+        this.logo = logo;
+        this.ivDate = ivDate;
+        this.ivTime = ivTime;
+        this.jobCode = jobCode;
+        this.location = location;
+    }
 
     public JobDetails(String jobName, String companyName, String cityName, String minExp, String maxExp, String minSalary, String maxSalary, String date, String logo) {
         this.jobName = jobName;
@@ -56,5 +67,21 @@ public class JobDetails {
 
     public String getLogo() {
         return logo;
+    }
+
+    public String getIvDate() {
+        return ivDate;
+    }
+
+    public String getIvTime() {
+        return ivTime;
+    }
+
+    public String getJobCode() {
+        return jobCode;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }
