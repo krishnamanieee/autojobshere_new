@@ -22,8 +22,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.edinbridge.autojobs.autojobshere.Adapter.AdapterHotJob;
+import com.edinbridge.autojobs.autojobshere.Adapter.AdapterInterview;
+import com.edinbridge.autojobs.autojobshere.Adapter.HotJob;
+import com.edinbridge.autojobs.autojobshere.Adapter.Interview;
+import com.edinbridge.autojobs.autojobshere.Adapter.JobDetails;
 import com.edinbridge.autojobs.autojobshere.R;
 import com.edinbridge.autojobs.autojobshere.SearchedActivity;
+import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,14 +64,9 @@ public class HomeFragment extends Fragment {
 
     private static final String URL_DATA="http://autojobshere.com/app/fetch_city.php";
     private static final String URL_DATA_DEPARTMENT="http://autojobshere.com/app/fetch_department.php";
-    private static final String URL_DATA_HOT="http://autojobshere.com/app/fetch_department.php";
+    private static final String URL_DATA_HOT="http://autojobshere.com/app/hotjob.php";
 
-    public static final String TAG_IMAGE_URL = "image";
-    public static final String TAG_NAME = "name";
-
-    private ArrayList<String> Listimages;
-    private ArrayList<String> Listcity;
-    private ArrayList<String> ListcompanyName;
+    private ArrayList<HotJob> hotjob_list;
 
 
 
@@ -130,18 +131,12 @@ public class HomeFragment extends Fragment {
 
 
         searchJobs();
-
-
         gridView_hotjob=(GridView) v.findViewById(R.id.gridView_hotJob);
-
-
+        loadGrid();
         arrayList= new ArrayList<>();
         arrayListDep= new ArrayList<>();
-
-
-
+        hotjob_list= new ArrayList<>();
         addLoanOption();
-
         spinner_segment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -160,9 +155,6 @@ public class HomeFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 getDepartment();
             }
-
-
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -172,8 +164,41 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private void searchJobs() {
+    private void loadGrid() {
 
+
+        StringRequest stringRequest  = new StringRequest(Request.Method.POST,
+                URL_DATA_HOT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray =jsonObject.getJSONArray("hotjob");
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject  jsonObject1 = jsonArray.getJSONObject(i);
+                                HotJob hotJob=new HotJob(
+                                        jsonObject1.getString("company"),
+                                        jsonObject1.getString("city"),
+                                        jsonObject1.getString("brandlogo")
+                                );
+                                hotjob_list.add(hotJob);
+                            }
+                            gridView_hotjob.setAdapter(new AdapterHotJob(hotjob_list,getContext()));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+    private void searchJobs() {
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,8 +210,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
     }
 
 
@@ -194,61 +217,45 @@ public class HomeFragment extends Fragment {
         final ProgressDialog progressDialog=new ProgressDialog(getContext());
         progressDialog.setMessage("loading Data....");
         progressDialog.show();
-
         StringRequest stringRequest=new StringRequest(Request.Method.POST,
                 URL_DATA_DEPARTMENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
+                        arrayListDep.clear();
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("department");
                              for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
                                 arrayListDep.add(object.getString("department"));
-
                             }
-
-                            String s1=arrayListDep.toString();
-                         //   Toast.makeText(getContext(),s1,Toast.LENGTH_SHORT).show();
                             Collections.sort(arrayListDep);
                             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayListDep);
                             spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
                             spinner_department.setAdapter(spinnerArrayAdapter);
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }){
 
             @Override
             protected Map<String, String> getParams() {
-
                 // Creating Map String Params.
                 Map<String, String> params = new HashMap<String, String>();
-
                 city=spinner_city.getSelectedItem().toString();
-
                 // Adding All values to Params.
                 params.put("city", city);
                 return params;
             }
-
-
-
         };
-
         RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
     }
@@ -264,52 +271,36 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
+                        arrayList.clear();
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("city");
-
                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
                                 arrayList.add(object.getString("city"));
                             }
-
-                            String s=arrayList.toString();
-                          //  Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
                             Collections.sort(arrayList);
                             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item, arrayList);
                             spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
                             spinner_city.setAdapter(spinnerArrayAdapter);
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }){
 
             @Override
             protected Map<String, String> getParams() {
-
-                // Creating Map String Params.
                 Map<String, String> params = new HashMap<String, String>();
-
                 segment=spinner_segment.getSelectedItem().toString();
-
-                // Adding All values to Params.
                 params.put("segment", segment);
                 return params;
             }
-
-
-
         };
 
         RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
@@ -356,7 +347,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void addLoanOption() {
-
         List<String> list =new ArrayList<String>();
         list.add("Select Segment");
         list.add("Car");
@@ -369,8 +359,16 @@ public class HomeFragment extends Fragment {
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
         spinner_segment.setAdapter(spinnerArrayAdapter);
 
+        List<String> list1 =new ArrayList<String>();
+        list1.add("Select City");
+        ArrayAdapter<String> spinnerArrayAdapter1 = new ArrayAdapter<String>(getContext(),R.layout.spiner_item,list1);
+        spinnerArrayAdapter1.setDropDownViewResource(R.layout.spiner_item);
+        spinner_city.setAdapter(spinnerArrayAdapter1);
 
+        List<String> list2 =new ArrayList<String>();
+        list2.add("Select Department");
+        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(getContext(),R.layout.spiner_item,list2);
+        spinnerArrayAdapter1.setDropDownViewResource(R.layout.spiner_item);
+        spinner_department.setAdapter(spinnerArrayAdapter2);
     }
-
-
 }

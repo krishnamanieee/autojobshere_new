@@ -1,6 +1,7 @@
 package com.edinbridge.autojobs.autojobshere;
 
 import android.content.Intent;
+import android.nfc.tech.NfcBarcode;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -30,6 +31,7 @@ import com.edinbridge.autojobs.autojobshere.fragment.InterviewScheduleFragment;
 import com.edinbridge.autojobs.autojobshere.other.CircleTransform;
 import com.edinbridge.autojobs.autojobshere.other.User;
 import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
+import com.squareup.picasso.Picasso;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     // urls to load navigation header background image
     // and profile image
     private static final String urlNavHeaderBg = "http://api.androidhive.info/images/nav-menu-header-bg.jpg";
-    private static final String urlProfileImg = "http://autojobshere.com/images/freshers/autosegement.png";
+    private static final String urlProfileImg = "http://autojobshere.com/employee/images/";
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
-        txtName = (TextView) navHeader.findViewById(R.id.name);
+
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
@@ -123,8 +125,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private void loadNavHeader() {
         // name, website
-        txtName.setText("Ravi Tamada");
-        txtWebsite.setText("www.androidhive.info");
+        UserLocalStore userLocalStore=new UserLocalStore(getApplicationContext());
+        String user=userLocalStore.getLoggedUser();
+        String name=userLocalStore.getLoggedname();
+        String logo=userLocalStore.getLoggedlogo();
+
+       // txtName.setText(name);
+       txtWebsite.setText(user);
 
         // loading header background image
         Glide.with(this).load(urlNavHeaderBg)
@@ -133,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 .into(imgNavHeaderBg);
 
         // Loading profile image
-        Glide.with(this).load(urlProfileImg)
+        Glide.with(this).load(urlProfileImg+logo)
                 .crossFade()
                 .thumbnail(0.5f)
                 .bitmapTransform(new CircleTransform(this))
@@ -274,6 +281,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                         drawer.closeDrawers();
                         return true;
+                    case R.id.nav_logout:
+                        userLocalstore.clearUserData();
+                        userLocalstore.setUserLoggedIn(false);
+                        startActivity(new Intent(getApplicationContext(),IntroActivity.class));
+                        Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+
                     default:
                         navItemIndex = 0;
                 }
@@ -408,9 +421,7 @@ public class MainActivity extends AppCompatActivity {
         return userLocalstore.getUserLoggedIn();
     }
     public void displayUserData(){
-       User user=userLocalstore.getLoggedInUser();
 
-        txtName.setText(user.toString());
 
 
 

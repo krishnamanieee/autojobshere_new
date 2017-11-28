@@ -3,6 +3,7 @@ package com.edinbridge.autojobs.autojobshere.other;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -140,7 +141,8 @@ public class ServerRequest {
                 } else {
                     String email = jobject.getString("email");
                     String password = jobject.getString("password");
-                    returnedUser = new User(email, password);
+                    String logo = jobject.getString("profileimage");
+                    returnedUser = new User(email, password,logo);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

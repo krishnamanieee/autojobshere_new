@@ -210,6 +210,18 @@ public class SearchJobFragmet extends Fragment {
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spiner_item);
         spinner_segment.setAdapter(spinnerArrayAdapter);
 
+        List<String> list1 =new ArrayList<String>();
+        list1.add("Select City");
+        ArrayAdapter<String> spinnerArrayAdapter1 = new ArrayAdapter<String>(getContext(),R.layout.spiner_item,list1);
+        spinnerArrayAdapter1.setDropDownViewResource(R.layout.spiner_item);
+        spinner_city.setAdapter(spinnerArrayAdapter1);
+
+        List<String> list2 =new ArrayList<String>();
+        list2.add("Select Department");
+        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(getContext(),R.layout.spiner_item,list2);
+        spinnerArrayAdapter1.setDropDownViewResource(R.layout.spiner_item);
+        spinner_department.setAdapter(spinnerArrayAdapter2);
+
 
     }
 
@@ -240,6 +252,7 @@ public class SearchJobFragmet extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
+                        arrayListDep.clear();
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("department");
@@ -302,6 +315,7 @@ public class SearchJobFragmet extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
+                        arrayList.clear();
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             JSONArray jsonArray=jsonObject.getJSONArray("city");

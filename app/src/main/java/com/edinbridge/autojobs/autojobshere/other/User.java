@@ -5,7 +5,7 @@ package com.edinbridge.autojobs.autojobshere.other;
  */
 
 public class User {
-    String name, email,phone_no, pass,otp;
+    String name, email,phone_no, pass,otp,logo;
 
 
 
@@ -24,8 +24,13 @@ public class User {
         this.email=email;
         this.phone_no="";
         this.pass=pass;
-
-
+    }
+    public  User(String email,String pass,String logo){
+        this.name="";
+        this.email=email;
+        this.phone_no="";
+        this.pass=pass;
+        this.logo=logo;
     }
     public User(String phone_no){
         this.phone_no=phone_no;

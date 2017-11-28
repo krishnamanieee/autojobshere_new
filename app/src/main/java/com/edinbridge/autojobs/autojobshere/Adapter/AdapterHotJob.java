@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.edinbridge.autojobs.autojobshere.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -49,8 +52,20 @@ public class AdapterHotJob extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
+        HotJob hotJob= hotJobs.get(i);
         Holder holder=new Holder();
         View rowView;
-        return null;
+        rowView=inflater.inflate(R.layout.item_grid_hotjob,null);
+        holder.cmyName=(TextView) rowView.findViewById(R.id.textView_gridComName);
+        holder.city=(TextView) rowView.findViewById(R.id.textView_gridCity);
+        holder.logo=(ImageView) rowView.findViewById(R.id.img_gridHotJobs);
+
+        holder.cmyName.setText(hotJob.getCompanyName());
+        holder.city.setText(hotJob.getCity());
+        Picasso.with(context)
+                .load("http://autojobshere.com/admin/"+hotJob.getLogo()).into(holder.logo);
+
+        return rowView;
     }
 }

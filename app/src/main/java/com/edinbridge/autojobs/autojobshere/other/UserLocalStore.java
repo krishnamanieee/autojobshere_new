@@ -21,12 +21,21 @@ public class UserLocalStore {
         spEditor.putString("phone_no",user.phone_no);
         spEditor.putString("pass",user.pass);
         spEditor.putString("otp",user.otp);
+        spEditor.putString("logo",user.logo);
 
         spEditor.commit();
     }
     public String getLoggedUser(){
         String email=userlocalDatabase.getString("email","");
         return  email;
+    }
+    public String getLoggedname(){
+        String name=userlocalDatabase.getString("name","");
+        return  name;
+    }
+    public String getLoggedlogo(){
+        String profileimage=userlocalDatabase.getString("logo","");
+        return  profileimage;
     }
     public User getLoggedInUser(){
         String name=userlocalDatabase.getString("name","");
