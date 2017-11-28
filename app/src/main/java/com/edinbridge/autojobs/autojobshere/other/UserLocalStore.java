@@ -24,6 +24,10 @@ public class UserLocalStore {
 
         spEditor.commit();
     }
+    public String getLoggedUser(){
+        String email=userlocalDatabase.getString("email","");
+        return  email;
+    }
     public User getLoggedInUser(){
         String name=userlocalDatabase.getString("name","");
         String email=userlocalDatabase.getString("email","");

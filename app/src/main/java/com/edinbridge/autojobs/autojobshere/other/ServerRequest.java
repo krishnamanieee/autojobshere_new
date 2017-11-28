@@ -135,13 +135,10 @@ public class ServerRequest {
                 String result = EntityUtils.toString(entity);
                 JSONObject jobject = new JSONObject(result);
 
-
                 if (jobject.length() == 0) {
-
                     returnedUser = null;
-
                 } else {
-                    String email = jobject.getString("emfdsail");
+                    String email = jobject.getString("email");
                     String password = jobject.getString("password");
                     returnedUser = new User(email, password);
                 }

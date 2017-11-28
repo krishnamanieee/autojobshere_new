@@ -26,16 +26,18 @@
             android:layout_height="wrap_content"
             android:text="Location"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:gravity="right"
-        android:layout_height="match_parent">
+        android:gravity="right">
+
         <ImageView
             android:layout_width="149dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:src="@drawable/icon_otp"/>
+            android:src="@drawable/icon_otp" />
     </LinearLayout>
 </LinearLayout>
     <android.support.v7.app.AlertController.RecycleListView

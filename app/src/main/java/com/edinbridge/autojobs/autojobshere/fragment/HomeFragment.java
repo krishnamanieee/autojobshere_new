@@ -207,6 +207,7 @@ public class HomeFragment extends Fragment {
                              for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
                                 arrayListDep.add(object.getString("department"));
+
                             }
 
                             String s1=arrayListDep.toString();

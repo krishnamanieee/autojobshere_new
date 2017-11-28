@@ -169,13 +169,11 @@ public class AppliedJobsFragmet extends Fragment {
             protected Map<String, String> getParams() {
 
                 UserLocalStore userLocalStore=new UserLocalStore(getContext());
-             //   String s=userLocalStore.getLoggedInUser();
-
+                String s=userLocalStore.getLoggedUser();
                 // Creating Map String Params.
                 Map<String, String> params = new HashMap<String, String>();
-
                 // Adding All values to Params.
-                params.put("user", "");
+                params.put("user", s);
                 return params;
             }
 
