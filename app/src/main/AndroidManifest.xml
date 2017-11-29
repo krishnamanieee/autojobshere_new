@@ -42,7 +42,8 @@
             android:label="@string/title_activity_job_des"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchedActivity" />
-        <activity android:name=".HJDescActivity"></activity>
+        <activity android:name=".HJDescActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
