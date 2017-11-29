@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,13 +22,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.edinbridge.autojobs.autojobshere.Adapter.AdapterHotJob;
-import com.edinbridge.autojobs.autojobshere.Adapter.AdapterInterview;
 import com.edinbridge.autojobs.autojobshere.Adapter.HotJob;
-import com.edinbridge.autojobs.autojobshere.Adapter.Interview;
-import com.edinbridge.autojobs.autojobshere.Adapter.JobDetails;
 import com.edinbridge.autojobs.autojobshere.R;
 import com.edinbridge.autojobs.autojobshere.SearchedActivity;
-import com.edinbridge.autojobs.autojobshere.other.UserLocalStore;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -133,15 +128,10 @@ public class HomeFragment extends Fragment {
         searchJobs();
         gridView_hotjob=(GridView) v.findViewById(R.id.gridView_hotJob);
         loadGrid();
-        arrayList= new ArrayList<>();
-        arrayListDep= new ArrayList<>();
-        hotjob_list= new ArrayList<>();
-        addLoanOption();
-        spinner_segment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        gridView_hotjob.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                getCity();
             }
 
             @Override
@@ -149,6 +139,11 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        arrayList= new ArrayList<>();
+        arrayListDep= new ArrayList<>();
+        hotjob_list= new ArrayList<>();
+        addLoanOption();
+
 
         spinner_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -42,7 +42,7 @@
             android:label="@string/title_activity_job_des"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchedActivity" />
-        <activity android:name=".Hotjob_descriptionActivity"></activity>
+        <activity android:name=".HJDescActivity"></activity>
     </application>
 
 </manifest>
